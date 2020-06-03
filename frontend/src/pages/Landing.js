@@ -50,10 +50,7 @@ function LandingPage() {
   }, []);
 
   const renderPostItems = feed.map((props) => (
-    <PostItem key={props._id} {...props}>
-      <div>Hello</div>
-      <Introduction />
-    </PostItem>
+    <PostItem key={props._id} {...props} />
   ));
 
   return (
