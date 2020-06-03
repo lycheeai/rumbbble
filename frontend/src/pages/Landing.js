@@ -9,13 +9,7 @@ import { selectUser } from "../reducers/authSlice";
 import withNavigation from "../hocs/withNavigation";
 
 import Introduction from "../components/Introduction";
-import PostPreview from "../components/PostPreview";
-
-const PostPreviewsContainer = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
-  grid-gap: 36px;
-`;
+import PostItem from "../components/PostItem";
 
 function LandingPage() {
   const user = useSelector(selectUser);
@@ -36,22 +30,18 @@ function LandingPage() {
       "Rumbbble - Discover the World's Top Developers and Programming Enthusiasts";
   }, []);
 
-  const renderPostPreviews = () =>
+  const renderPostItems = () =>
     projectFeed.map((props) => (
-      <PostPreview key={props._id} {...props}>
+      <PostItem key={props._id} {...props}>
         <div>Hello</div>
         <Introduction />
-      </PostPreview>
+      </PostItem>
     ));
 
   return (
     <Fragment>
       {!user && <Introduction />}
-      <Container className="px-sm-0">
-        <PostPreviewsContainer className="mt-4 card-deck">
-          {renderPostPreviews()}
-        </PostPreviewsContainer>
-      </Container>
+      <Container className="px-sm-0">{renderPostItems()}</Container>
     </Fragment>
   );
 }
