@@ -112,7 +112,6 @@ export default function UploadPage() {
               <Form.Group controlId="description">
                 <Form.Label>Description</Form.Label>
                 <Form.Control
-                  required
                   as="textarea"
                   name="description"
                   onChange={handleChange}
