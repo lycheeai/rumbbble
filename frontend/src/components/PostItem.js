@@ -182,7 +182,7 @@ export default function PostItem({
       <Preview style={{ backgroundImage: `url(${image})` }} />
       <Content>
         <Title>{title}</Title>
-        <Description>{description}</Description>
+        {description && <Description>{description}</Description>}
         <Meta>
           <Avatar className="avatar" alt={author.name} src={author.picture} />
           <Info>
