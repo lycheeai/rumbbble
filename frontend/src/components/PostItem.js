@@ -2,14 +2,8 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import Card from "react-bootstrap/Card";
-import ButtonGroup from "react-bootstrap/ButtonGroup";
-import Image from "react-bootstrap/Image";
-import { ChatFill, HeartFill } from "react-bootstrap-icons";
 
 import { ReactComponent as ArrowUpIcon } from "../assets/arrow-up.svg";
-
-import useNumLikes from "../hooks/useNumLikes";
 
 const Container = styled.div`
   background: #fff;

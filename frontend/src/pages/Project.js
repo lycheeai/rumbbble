@@ -21,8 +21,6 @@ import {
   Eye,
 } from "react-bootstrap-icons";
 
-import CommentFeed from "../components/CommentFeed";
-import CommentForm from "../components/CommentForm";
 import CommentSection from "../components/CommentSection";
 
 import withNavigation from "../hocs/withNavigation";
