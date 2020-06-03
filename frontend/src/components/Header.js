@@ -1,44 +1,62 @@
-import React, { Fragment } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
 import Nav from "react-bootstrap/Nav";
-import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import Button from "react-bootstrap/Button";
-import Container from "react-bootstrap/Container";
-import Image from "react-bootstrap/Image";
 
-import Logo from "./Logo";
+import { ReactComponent as LogoSVG } from "../assets/logo.svg";
+import { ReactComponent as SearchIcon } from "../assets/search.svg";
 
 import { selectUser } from "../reducers/authSlice";
 
-const NavigationContainer = styled(Navbar)`
-  box-shadow: inset 0px -1px 0px #f3f3f4;
-  background: #fff;
-  color: #6e6d7a;
+const Header = styled.header`
+  padding: 40px 0px 24px 0px;
+  font-weight: 600;
+`;
+
+const Container = styled.div`
+  width: 90%;
+  padding: 0;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+
+  & div {
+    display: flex;
+  }
+`;
+
+const Logo = styled(LogoSVG)`
+  width: 80px;
+  height: auto;
+`;
+
+const Avatar = styled.img`
+  width: 36px;
+  height: 36px;
+  border-radius: 18px;
 `;
 
 export default function Navigation() {
   const user = useSelector(selectUser);
 
   const renderLoggedIn = (
-    <Fragment>
+    <div>
       <NavDropdown
         id="profile-dropdown"
-        title={
-          <Image src={user.picture} height="40" width="40" roundedCircle />
-        }
+        title={<Avatar src={user.picture} className="avatar" alt={user.name} />}
       >
         <NavDropdown.Item href="/auth/logout">Sign Out</NavDropdown.Item>
       </NavDropdown>
       <Button className="ml-2" variant="primary" href="/projects/new">
         Upload
       </Button>
-    </Fragment>
+    </div>
   );
 
   const renderLoggedOut = (
-    <Fragment>
+    <div>
       <Nav.Link href="/login">Sign in</Nav.Link>
       <Button
         className="d-none d-lg-block d-xl-block ml-3"
@@ -47,19 +65,17 @@ export default function Navigation() {
       >
         Sign up
       </Button>
-    </Fragment>
+    </div>
   );
 
   return (
-    <NavigationContainer sticky="top">
+    <Header>
       <Container>
-        <Navbar.Brand className="mr-auto" href="/">
+        <a className="logo" href="/">
           <Logo />
-        </Navbar.Brand>
-        <Nav className="align-items-center">
-          {user ? renderLoggedIn : renderLoggedOut}
-        </Nav>
+        </a>
+        {user ? renderLoggedIn : renderLoggedOut}
       </Container>
-    </NavigationContainer>
+    </Header>
   );
 }

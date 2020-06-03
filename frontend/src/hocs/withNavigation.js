@@ -1,19 +1,10 @@
 import React, { Fragment } from "react";
-import Navigation from "../components/Navigation";
+import Header from "../components/Header";
 
-// export default function withNavigation(Component) {
-//   return (
-//     <Fragment>
-//       <Navigation />
-//       <Component />
-//     </Fragment>
-//   );
-// }
-
-export default function withNavigation(WrappedComponent) {
+export default function withHeader(WrappedComponent) {
   return (props) => (
     <Fragment>
-      <Navigation />
+      <Header />
       <WrappedComponent />
     </Fragment>
   );
