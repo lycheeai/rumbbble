@@ -5,6 +5,7 @@ import store from "./app/store";
 import { Provider } from "react-redux";
 import * as serviceWorker from "./serviceWorker";
 import "./utilities/theme.scss";
+import "normalize.css";
 
 import { GlobalStyle } from "./utilities/GlobalStyle";
 
