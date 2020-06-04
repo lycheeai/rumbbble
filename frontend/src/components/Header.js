@@ -20,6 +20,7 @@ const Container = styled.div`
   padding: 0;
   margin: 0 auto;
   display: flex;
+  align-items: center;
   justify-content: space-between;
 
   & div {
