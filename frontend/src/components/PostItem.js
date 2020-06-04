@@ -3,7 +3,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-import { ReactComponent as ArrowUpIcon } from "../assets/arrow-up.svg";
+import { ReactComponent as ArrowUpFillIcon } from "../assets/arrow-up-fill.svg";
 
 const Container = styled.div`
   background: #fff;
@@ -122,6 +122,7 @@ const Button = styled.button`
   border: 0;
   background: transparent;
   transition: all 400ms ease;
+  cursor: pointer;
 `;
 
 const VoteCount = styled.p`
@@ -188,7 +189,7 @@ export default function PostItem({
             <Avatar className="avatar" alt={author.name} src={author.picture} />
             <Votes>
               <Button>
-                <ArrowUpIcon />
+                <ArrowUpFillIcon />
               </Button>
               <VoteCount>{numLikes}</VoteCount>
             </Votes>
@@ -197,7 +198,7 @@ export default function PostItem({
       </Content>
       <Votes>
         <Button onClick={handleClickLike}>
-          <ArrowUpIcon />
+          <ArrowUpFillIcon />
         </Button>
         <VoteCount>{numLikes}</VoteCount>
       </Votes>

@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { createRef, useEffect, useState } from "react";
 import axios from "axios";
 import styled from "styled-components";
 
 import withNavigation from "../hocs/withNavigation";
-
 import PostItem from "../components/PostItem";
+import { ReactComponent as ArrowDownIcon } from "../assets/arrow-down.svg";
 
 const Container = styled.div`
   max-width: 90%;
@@ -30,8 +30,46 @@ const Intro = styled.div`
   }
 `;
 
+const SortContainer = styled.form`
+  width: auto;
+  height: auto;
+  background: none;
+  padding-left: 0;
+  position: relative;
+`;
+
+const Sort = styled.select`
+  padding: 10px 45px 10px 20px;
+  font-size: 2em;
+  border: 3px solid #eaeaea;
+  color: #292f3f;
+  border-radius: 15px;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+
+  & + svg {
+    width: auto;
+    height: 8px;
+    margin-right: 20px;
+    position: absolute;
+    right: 0;
+    margin-right: 12px;
+    pointer-events: none;
+
+    & path {
+      fill: #00b2ff;
+    }
+  }
+`;
+
 function LandingPage() {
   const [feed, setFeed] = useState([]);
+  const [selectText, setSelectText] = useState("");
+  const [selectWidth, setSelectWidth] = useState(0);
+
+  const selectRef = createRef();
+  const tempSelectRef = createRef();
 
   useEffect(() => {
     let mounted = true;
@@ -48,6 +86,11 @@ function LandingPage() {
     document.title = "Top Posts — Rumbbble";
   }, []);
 
+  const handleSelectResize = (event) => {
+    console.log(event.target.value);
+    setSelectText(event.target.value);
+  };
+
   const renderPostItems = feed.map((props) => (
     <PostItem key={props._id} {...props} />
   ));
@@ -55,13 +98,26 @@ function LandingPage() {
   return (
     <Container>
       <Intro>
-        <h1>Top programming projects sorted by</h1>
-        <select name="sort">
-          <option value="new">new</option>
-          <option value="likes">likes</option>
-          <option value="comments">comments</option>
-          <option value="oldest">oldest</option>
-        </select>
+        <h1>Coding projects sorted by</h1>
+        <SortContainer>
+          <Sort
+            style={{ width: selectWidth }}
+            onChange={handleSelectResize}
+            ref={selectRef}
+          >
+            <option value="new">new</option>
+            <option value="likes">likes</option>
+            <option value="comments">comments</option>
+            <option value="oldest">oldest</option>
+          </Sort>
+          <div ref={tempSelectRef}>
+            <select id="width-temp-select" style={{ display: "none" }}>
+              {console.log(tempSelectRef)}
+              <option id="width-temp-option">{selectText}</option>
+            </select>
+          </div>
+          <ArrowDownIcon />
+        </SortContainer>
       </Intro>
       {renderPostItems}
     </Container>
