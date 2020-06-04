@@ -4,7 +4,6 @@ import styled from "styled-components";
 
 import withNavigation from "../hocs/withNavigation";
 
-import Introduction from "../components/Introduction";
 import PostItem from "../components/PostItem";
 
 const Container = styled.div`
