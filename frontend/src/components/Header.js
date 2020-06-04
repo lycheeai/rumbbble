@@ -1,9 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
-import Nav from "react-bootstrap/Nav";
-import NavDropdown from "react-bootstrap/NavDropdown";
-import Button from "react-bootstrap/Button";
 
 import { ReactComponent as LogoSVG } from "../assets/logo.svg";
 import { ReactComponent as SearchIcon } from "../assets/search.svg";
@@ -39,32 +37,23 @@ const Avatar = styled.img`
   border-radius: 18px;
 `;
 
+const Button = styled(Link)``;
+
 export default function Navigation() {
   const user = useSelector(selectUser);
 
   const renderLoggedIn = (
     <div>
-      <NavDropdown
-        id="profile-dropdown"
-        title={<Avatar src={user.picture} className="avatar" alt={user.name} />}
-      >
-        <NavDropdown.Item href="/auth/logout">Sign Out</NavDropdown.Item>
-      </NavDropdown>
-      <Button className="ml-2" variant="primary" href="/projects/new">
-        Upload
-      </Button>
+      <Avatar src={user.picture} alt={user.name} />
+      <Button to="/projects/new">Upload</Button>
     </div>
   );
 
   const renderLoggedOut = (
     <div>
-      <Nav.Link href="/login">Sign in</Nav.Link>
-      <Button
-        className="d-none d-lg-block d-xl-block ml-3"
-        variant="primary"
-        href="/login"
-      >
-        Sign up
+      <Button to="/login">
+        <img src={require("../assets/github-logo.png")} />
+        Sign in/up
       </Button>
     </div>
   );
