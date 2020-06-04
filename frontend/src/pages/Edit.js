@@ -17,6 +17,11 @@ const LogoContainer = styled(Navbar.Brand)`
   line-height: 0;
 `;
 
+const Logo = styled(Image)`
+  width: 6rem;
+  height: auto;
+`;
+
 export default function EditPage() {
   const { projectId } = useParams();
   const history = useHistory();

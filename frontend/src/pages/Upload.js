@@ -6,6 +6,7 @@ import Navbar from "react-bootstrap/Navbar";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import Image from "react-bootstrap/Image";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import bsCustomFileInput from "bs-custom-file-input";
@@ -112,6 +113,7 @@ export default function UploadPage() {
               <Form.Group controlId="description">
                 <Form.Label>Description</Form.Label>
                 <Form.Control
+                  required
                   as="textarea"
                   name="description"
                   onChange={handleChange}
