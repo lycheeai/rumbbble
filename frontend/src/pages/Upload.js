@@ -121,9 +121,10 @@ export default function UploadPage() {
                 <Form.Label>Repository Link</Form.Label>
                 <Form.Control
                   required
-                  type="text"
+                  type="url"
                   name="repoURL"
                   autoComplete="off"
+                  defaultValue="https://"
                   onChange={handleChange}
                 ></Form.Control>
               </Form.Group>
@@ -131,9 +132,10 @@ export default function UploadPage() {
                 <Form.Label>Demo Link</Form.Label>
                 <Form.Control
                   required
-                  type="text"
+                  type="url"
                   name="demoURL"
                   autoComplete="off"
+                  defaultValue="https://"
                   onChange={handleChange}
                 ></Form.Control>
               </Form.Group>
